@@ -109,6 +109,8 @@ class User extends Component
       })
     }
 
+    console.log('RESULT',difference)
+
     const { suggestions } = this.props;
     const userInput = e.currentTarget.value;
 
@@ -160,9 +162,9 @@ class User extends Component
   onPlanetSubmit = () => {
     
 
-    this.setState(prevState => ({
-      searchCounter:  prevState.searchCounter + 1
-    }));
+    // this.setState(prevState => ({
+    //   searchCounter:  prevState.searchCounter + 1
+    // }), () => console.log('RED',this.state.searchCounter));
     const _userInput = this.state.userInput;
     if (_userInput) {
       const findPlanetAtIndex = this.props.user.planetsDetails.results.findIndex(item => item.name === _userInput)
@@ -171,13 +173,15 @@ class User extends Component
         this.setState({
           ...this.state,
           populationOfPlanet,
-          NotFoundPlanet: false  
+          NotFoundPlanet: false,
+          searchCounter:  this.state.searchCounter + 1  
         })
       }
       else {
         this.setState({
           ...this.state,
-          NotFoundPlanet: true
+          NotFoundPlanet: true,
+          searchCounter:  this.state.searchCounter + 1 
         })
       }
     }
@@ -185,6 +189,7 @@ class User extends Component
   }
 
   render() {
+    console.log('COUNTER',this.state.searchCounter)
     const {
       onChange,
       onClick,

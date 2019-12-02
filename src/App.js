@@ -113,7 +113,7 @@ class App extends React.Component {
     const planetNames = []
 
     this.state.planetsDetails && this.state.planetsDetails.results && this.state.planetsDetails.results.map(item => {
-      planetNames.push(item.name)
+      return planetNames.push(item.name)
     })
 
     return (
